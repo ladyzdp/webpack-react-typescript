@@ -1,7 +1,7 @@
 // import _ from 'lodash';
 // require('index.scss');
 // import './index.css';
-import './index.css';
+import './index.scss';
 // import './index.scss';
 // require('./index.scss')
 // import Miao from './img/miao.jpg';//引入图片
