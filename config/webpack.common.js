@@ -2,13 +2,13 @@
 const path = require('path');
 const chalk = require('chalk');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const os = require('os');
 const HappyPack = require('happypack');
 const webpack = require('webpack');
 const happyThreadPool = HappyPack.ThreadPool({
     size: os.cpus().length
 })
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
@@ -17,9 +17,9 @@ function resolve(dir) {
 function assetsPath(_path_) {
     let assetsSubDirectory;
     if (process.env.NODE_ENV === 'production') {
-        assetsSubDirectory = 'static' //可根据实际情况修改
+        assetsSubDirectory = 'assets' //可根据实际情况修改
     } else {
-        assetsSubDirectory = 'static'
+        assetsSubDirectory = 'assets'
     }
     return path.posix.join(assetsSubDirectory, _path_)
 }
@@ -30,12 +30,12 @@ module.exports = {
     },
     output: {
         path: resolve('dist'),
-        filename: '[name].bundle.js',
+        filename: '[name].[hash].js',
         // chunkFilename: '[name].bundle.js',
         //  publicPath: './'
     },
     resolve: {
-        extensions: ['.scss', ".js", ".css", '.json', ]
+        extensions: [".js", ".css", '.json']
     },
     module: {
         rules: [{
@@ -66,7 +66,7 @@ module.exports = {
                     }
                 }
             },
-           
+
             {
                 test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
                 loader: 'url-loader',
@@ -76,8 +76,8 @@ module.exports = {
                 }
             },
             {
-                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-                loader: 'url-loader',
+                test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
+                loader: 'file-loader',
                 options: {
                     limit: 10000,
                     name: assetsPath('fonts/[name].[hash:7].[ext]')
@@ -112,7 +112,7 @@ module.exports = {
             chunkFilename: "[id].css"
         }),
         new webpack.ProvidePlugin({
-             join: ['lodash', 'join'],
+            join: ['lodash', 'join'],
             // _: ['lodash'],
             $: ['jquery']
         }),

@@ -27,7 +27,6 @@ module.exports = merge(common, {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Webpack4.0---喵',
             chunks:['index', 'common'],
             filename: 'index.html', // 配置输出文件名和路径
             template: path.resolve(__dirname, '..', 'src', 'index.html'), // 配置文件模板
