@@ -35,6 +35,11 @@ module.exports = merge(common, {
             to: path.join(__dirname, '..', 'dist', 'assets'),
             ignore: ['.*']
         }]),
+        new CopyWebpackPlugin([{
+            from: path.join(__dirname, '..', 'src/laydate/theme'),
+            to: path.join(__dirname, '..', 'dist', 'theme'),
+            ignore: ['.*']
+        }]),
         new CleanWebpackPlugin(['dist'], {
             root: path.join(__dirname, '..'),
             exclude: ['manifest.json', 'vendor.dll.js'],

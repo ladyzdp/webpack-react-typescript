@@ -1,10 +1,10 @@
 'use strict'
 const path = require('path');
 const chalk = require('chalk');
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const os = require('os');
-const HappyPack = require('happypack');
 const webpack = require('webpack');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const HappyPack = require('happypack');
 const happyThreadPool = HappyPack.ThreadPool({
     size: os.cpus().length
 })
@@ -13,6 +13,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
+
+// function resolveTarget(target, dir) {
+//     return path.join(__dirname, '..', target, dir)
+// }
 
 function assetsPath(_path_) {
     let assetsSubDirectory;
@@ -26,7 +30,9 @@ function assetsPath(_path_) {
 module.exports = {
     context: path.resolve(__dirname, '../'),
     entry: {
-        index: './src/index.js'
+        index: './src/index.js',
+        jquery: 'jquery', //4.0之后单独打包第三方库
+        // laydate:'laydate',//4.0之后单独打包第三方库
     },
     output: {
         path: resolve('dist'),
@@ -35,7 +41,10 @@ module.exports = {
         //  publicPath: './'
     },
     resolve: {
-        extensions: [".js", ".css", '.json']
+        extensions: [".js", ".css", '.json'],
+        alias: {
+            laydate: path.resolve(__dirname, 'src/laydate/laydate.js')
+        }
     },
     module: {
         rules: [{
@@ -88,6 +97,11 @@ module.exports = {
     optimization: {
         splitChunks: {
             cacheGroups: {
+                // index:{
+                //     chunks: "initial",
+                //     name:['jquery','laydate'],
+                //     enforce:true 
+                // },
                 commons: {
                     test: /[\\/]node_modules[\\/]/,
                     chunks: "initial",
@@ -96,7 +110,7 @@ module.exports = {
                     minChunks: 2,
                     maxInitialRequests: 5, // The default limit is too small to showcase the effect
                     minSize: 0, // This is example is too small to create commons chunks
-                    reuseExistingChunk: true // 可设置是否重用该chunk（查看源码没有发现默认值）
+                    reuseExistingChunk: true, // 可设置是否重用该chunk（查看源码没有发现默认值）
                 }
             }
         }
@@ -114,8 +128,11 @@ module.exports = {
         new webpack.ProvidePlugin({
             join: ['lodash', 'join'],
             // _: ['lodash'],
-            $: ['jquery']
+            $: ['jquery'],
+            // laydate: ['laydate']
         }),
+        
+        // new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.dll.js'),
         new ProgressBarPlugin({
             format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)'
         })

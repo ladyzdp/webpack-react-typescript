@@ -4,7 +4,7 @@ const path = require('path');
 const webpack = require('webpack')
 const common = require('./webpack.common');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = merge(common, {
     mode: 'development',
     devtool: 'eval-source-map',
@@ -36,6 +36,11 @@ module.exports = merge(common, {
             }
 
         }),
+        new CopyWebpackPlugin([{
+            from: path.join(__dirname, '..', 'src/laydate/theme'),
+            to: path.join(__dirname, '..', 'dist', 'theme'),
+            ignore: ['.*']
+        }]),
         //  new webpack.DllReferencePlugin({
         //      manifest: path.resolve(__dirname, '..', 'dist', 'manifest.json')
         //  }),

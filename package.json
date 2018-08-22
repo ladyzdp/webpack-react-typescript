@@ -60,6 +60,7 @@
   },
   "dependencies": {
     "jquery": "^3.3.1",
+    "laydate": "^1.0.7",
     "lodash": "^4.17.10"
   }
 }
