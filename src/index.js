@@ -1,5 +1,5 @@
 // import _ from 'lodash';
-// require('index.scss');
+// require('./index.css');
 // import './index.css';
 import './index.scss';
 // import './index.scss';
@@ -17,9 +17,6 @@ function complate() {
     var btn = document.createElement('button');
     // element.innerHTML = _.join(['hello', 'webpack'], "<span class='icon-home'></span>", `${cube(5)}`);
     element.innerHTML = join(['hello', 'webpack'], "<span class='icon-home'></span>", `${cube(5)}`);
-    // var myImg = new Image();
-    // myImg.src = Miao;
-    // this.alert('Hmmm, this probably isn\'t a great idea...')
     btn.innerHTML = '点我呀';
     btn.onclick = printMe;
     element.appendChild(btn);
