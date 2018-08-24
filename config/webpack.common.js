@@ -73,7 +73,7 @@ module.exports = {
     resolve: {
         extensions: ['.scss', ".css", ".js", '.json'],
         alias: {
-            laydate: path.resolve(__dirname, 'src/laydate/laydate.js')
+            laydate: path.resolve(__dirname, 'src/lib/laydate/laydate.js')
         }
     },
     module: {
@@ -123,7 +123,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: assetsPath('media/[name].[hash:7].[ext]')
+                    name: assetsPath('assets/media/[name].[hash:7].[ext]')
                 }
             },
             {

@@ -36,7 +36,7 @@ module.exports = merge(common, {
             ignore: ['.*']
         }]),
         new CopyWebpackPlugin([{
-            from: path.join(__dirname, '..', 'src/laydate/theme'),
+            from: path.join(__dirname, '..', 'src/lib/laydate/theme'),
             to: path.join(__dirname, '..', 'dist', 'theme'),
             ignore: ['.*']
         }]),

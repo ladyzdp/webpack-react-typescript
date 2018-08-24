@@ -1,4 +1,4 @@
-var laydate = require("./laydate/laydate.js");
+var laydate = require("./assets/lib/laydate/laydate");
 require('./index1'); //使用require引入会自动生成css,import 不会生成
 // import Miao from './img/miao.jpg';//引入图片
 // import Datas from './data/data.xml';//引入数据
@@ -21,8 +21,20 @@ function complate() {
     return element;
 }
 let compile = complate();
+
+function getJson() {
+    $.ajax({
+        type: "GET",
+        url: "mock/5b7fbc808d7a895f7f3ac462/ss",
+        success: function (response) {
+            console.log(response)
+        }
+    });
+}
+getJson();
+
 document.body.appendChild(compile);
 laydate.render({
     elem: '#mydate'
 });
-console.log(laydate)
+// console.log(laydate)

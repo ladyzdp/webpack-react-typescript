@@ -23,7 +23,7 @@ module.exports = merge(common, {
     },
     watchOptions: {
         ignored: /node_modules/, //忽略不用监听变更的目录
-        aggregateTimeout: 500, //防止重复保存频繁重新编译,500毫米内重复保存不打包
+        aggregateTimeout: 1000, //防止重复保存频繁重新编译,500毫米内重复保存不打包
         poll: 1000 //每秒询问的文件变更的次数
     },
     plugins: [
@@ -38,7 +38,7 @@ module.exports = merge(common, {
 
         }),
         new CopyWebpackPlugin([{
-            from: path.join(__dirname, '..', 'src/laydate/theme'),
+            from: path.join(__dirname, '..', 'src/assets/lib/laydate/theme'),
             to: path.join(__dirname, '..', 'dist', 'theme'),
             ignore: ['.*']
         }]),
