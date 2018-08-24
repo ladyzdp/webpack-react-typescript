@@ -7,7 +7,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = merge(common, {
     mode: 'development',
-    devtool: 'eval-source-map',
+    // devtool: 'eval-source-map',
+    devtool: 'cheap-module-eval-source-map',
     output: {
         publicPath: '/'
     },
@@ -45,7 +46,7 @@ module.exports = merge(common, {
         //      manifest: path.resolve(__dirname, '..', 'dist', 'manifest.json')
         //  }),
         new webpack.HotModuleReplacementPlugin(), //HMR
-        new webpack.NamedModulesPlugin() // HMR
+        // new webpack.NamedModulesPlugin() // HMR
     ]
 
 

@@ -27,6 +27,36 @@ function assetsPath(_path_) {
     }
     return path.posix.join(assetsSubDirectory, _path_)
 }
+
+function isBuild() {
+    let imgLoader = {};
+    if (process.env.NODE_ENV === 'production') {
+        imgLoader = {
+            loader: 'image-webpack-loader', //图片压缩
+            options: {
+                name: assetsPath('assets/[name].[hash:7].[ext]'), // 图片输出的路径
+                mozjpeg: { // 压缩 jpeg 的配置
+                    progressive: true,
+                    quality: 65
+                },
+                optipng: { // 使用 imagemin-optipng 压缩 png，enable: false 为关闭
+                    enabled: false,
+                },
+                pngquant: { // 使用 imagemin-pngquant 压缩 png
+                    quality: '65-90',
+                    speed: 4
+                },
+                gifsicle: { // 压缩 gif 的配置
+                    interlaced: false,
+                },
+                webp: { // 开启 webp，会把 jpg 和 png 图片压缩为 webp 格式
+                    quality: 75
+                },
+            }
+        }
+    }
+    return imgLoader;
+}
 module.exports = {
     context: path.resolve(__dirname, '../'),
     entry: {
@@ -41,7 +71,7 @@ module.exports = {
         //  publicPath: './'
     },
     resolve: {
-        extensions: [".js", ".css", '.json'],
+        extensions: ['.scss', ".css", ".js", '.json'],
         alias: {
             laydate: path.resolve(__dirname, 'src/laydate/laydate.js')
         }
@@ -67,13 +97,25 @@ module.exports = {
             { //file-loader 解决css等文件中引入图片路径的问题
                 // url-loader 当图片较小的时候会把图片BASE64编码，大于limit参数的时候还是使用file-loader 进行拷贝
                 test: /\.(png|jpg|jpeg|gif|svg)/,
-                use: {
-                    loader: 'url-loader',
-                    options: {
-                        name: assetsPath('images/[name].[hash:7].[ext]'), // 图片输出的路径
-                        limit: 1 * 1024
-                    }
-                }
+                use: [
+
+                    // {
+                    //     loader: 'file-loader',
+                    //     options: {
+                    //         name: assetsPath('images/[name].[hash:7].[ext]'), // 图片输出的路径}
+                    //     }
+                    // },
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            name: assetsPath('images/[name].[hash:7].[ext]'), // 图片输出的路径
+                            limit: 1 * 1024
+                        }
+                    },
+                    // isBuild
+
+                ]
+
             },
 
             {
@@ -131,7 +173,7 @@ module.exports = {
             $: ['jquery'],
             // laydate: ['laydate']
         }),
-        
+
         // new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.dll.js'),
         new ProgressBarPlugin({
             format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)'

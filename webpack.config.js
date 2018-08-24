@@ -16,8 +16,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
-    chunkFilename: '[name].bundle.js',
-    publicPath: './'
+    // chunkFilename: '[name].bundle.js',
+    // publicPath: './'
   },
 
   optimization: {
@@ -41,18 +41,19 @@ module.exports = {
         test: /.css$/,
         use: ["style-loader", "css-loader"],
       },
-      {
-        test: /\.ts?$/,
-        use: [{
-          loader: 'ts-loader',
-          options: {
-            transpileOnly: true,
-            experimentalWatchApi: true,
-          },
-        }]
-      }, {
+      // {
+      //   test: /\.ts?$/,
+      //   use: [{
+      //     loader: 'ts-loader',
+      //     options: {
+      //       transpileOnly: true,
+      //       experimentalWatchApi: true,
+      //     },
+      //   }]
+      // },
+       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader']
+        use: ['url-loader']
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
@@ -73,7 +74,7 @@ module.exports = {
     ]
   },
   resolve: {
-    // extensions: [".js", ".tsx", ".ts", ]
+    extensions: [".scss", ".css", ".js" ]
   },
   mode: "development",
   devServer: {
