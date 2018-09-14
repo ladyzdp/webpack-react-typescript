@@ -3,6 +3,7 @@ require('./index1'); //使用require引入会自动生成css,import 不会生成
 // import Miao from './img/miao.jpg';//引入图片
 // import Datas from './data/data.xml';//引入数据
 import printMe from './print';
+import Login from './apps/login/login';
 import {
     cube
 } from './math.js';
@@ -34,7 +35,10 @@ function getJson() {
 getJson();
 
 document.body.appendChild(compile);
+
 laydate.render({
     elem: '#mydate'
 });
-// console.log(laydate)
+
+let login  =  new Login();
+console.log(login)

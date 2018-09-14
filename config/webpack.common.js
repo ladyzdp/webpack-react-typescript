@@ -1,4 +1,4 @@
-'use strict'
+
 const path = require('path');
 const chalk = require('chalk');
 const os = require('os');
@@ -61,6 +61,7 @@ module.exports = {
     context: path.resolve(__dirname, '../'),
     entry: {
         index: './src/index.js',
+        login: './src/apps/login/login.js',
         jquery: 'jquery', //4.0之后单独打包第三方库
         // laydate:'laydate',//4.0之后单独打包第三方库
     },

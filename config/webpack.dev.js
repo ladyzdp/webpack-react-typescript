@@ -28,7 +28,7 @@ module.exports = merge(common, {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            chunks:['index', 'common'],
+            chunks:['index','login', 'common'],
             filename: 'index.html', // 配置输出文件名和路径
             template: path.resolve(__dirname, '..', 'src', 'index.html'), // 配置文件模板
             hash: true, //防止缓存
