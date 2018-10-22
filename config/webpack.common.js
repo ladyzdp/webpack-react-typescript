@@ -1,4 +1,3 @@
-
 const path = require('path');
 const chalk = require('chalk');
 const os = require('os');
@@ -61,7 +60,7 @@ module.exports = {
     context: path.resolve(__dirname, '../'),
     entry: {
         index: './src/index.js',
-        login: './src/apps/login/login.js',
+        // login: './src/apps/login/login.js',
         jquery: 'jquery', //4.0之后单独打包第三方库
         // laydate:'laydate',//4.0之后单独打包第三方库
     },
@@ -72,7 +71,7 @@ module.exports = {
         //  publicPath: './'
     },
     resolve: {
-        extensions: ['.scss', ".css", ".js", '.json'],
+        extensions: [ 'jsx', ".js",'.scss', ".css", '.json'],
         alias: {
             laydate: path.resolve(__dirname, 'src/lib/laydate/laydate.js')
         }
@@ -172,6 +171,8 @@ module.exports = {
             join: ['lodash', 'join'],
             // _: ['lodash'],
             $: ['jquery'],
+            // 'React':'react',
+            // 'ReactDOM':'react-dom'
             // laydate: ['laydate']
         }),
 
