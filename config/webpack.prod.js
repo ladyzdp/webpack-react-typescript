@@ -7,10 +7,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const glob = require('glob');
-const PurifyCSSPlugin = require('purifycss-webpack');//删除无用的class类名
-const WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-
+const PurifyCSSPlugin = require('purifycss-webpack'); //删除无用的class类名
+const WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+// const TypedocWebpackPlugin = require('typedoc-webpack-plugin');
 
 module.exports = merge(common, {
     // devtool: 'source-map',
@@ -19,6 +19,9 @@ module.exports = merge(common, {
         publicPath: './'
     },
     plugins: [
+        // new TypedocWebpackPlugin({
+        //     json: './docs.json',
+        // }),
         new HtmlWebpackPlugin({
             chunks: ['index', 'common'],
             filename: 'index.html', // 配置输出文件名和路径
@@ -31,12 +34,12 @@ module.exports = merge(common, {
 
         }),
         new CopyWebpackPlugin([{
-            from: path.join(__dirname, '..', 'assets'),
+            from: path.join(__dirname, '..', 'src/assets'),
             to: path.join(__dirname, '..', 'dist', 'assets'),
             ignore: ['.*']
         }]),
         new CopyWebpackPlugin([{
-            from: path.join(__dirname, '..', 'src/lib/laydate/theme'),
+            from: path.join(__dirname, '..', 'src/lib/laydate/theme/**/*'),
             to: path.join(__dirname, '..', 'dist', 'theme'),
             ignore: ['.*']
         }]),
@@ -46,20 +49,23 @@ module.exports = merge(common, {
             verbose: true,
             dry: false
         }),
-
         new OptimizeCssAssetsPlugin({
             assetNameRegExp: /\.optimize\.css$/g,
             cssProcessor: require('cssnano'),
-            cssProcessorOptions: { discardComments: { removeAll: true } },
+            cssProcessorOptions: {
+                discardComments: {
+                    removeAll: true
+                }
+            },
             canPrint: true
-          }),
-     
+        }),
+        
         new PurifyCSSPlugin({
             paths: glob.sync(path.join(__dirname, '../src/*.html')),
             // minimize:true,
             purifyOptions: {
-                whitelist: ['*icon*']//白名单
-              }
+                whitelist: ['*icon*'] //白名单
+            }
         }),
 
         new WebpackParallelUglifyPlugin({
@@ -76,9 +82,10 @@ module.exports = merge(common, {
                 }
             }
         }),
+
         new webpack.DllReferencePlugin({
             manifest: path.resolve(__dirname, '..', 'dist', 'manifest.json')
-            
+
         })
     ]
 });

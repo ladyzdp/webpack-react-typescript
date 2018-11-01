@@ -1,8 +1,9 @@
 // import React from 'react';
 // import ReactDOM from 'react-dom';
+import Atm,{Index} from './apps/index/index';
 require('./index1'); //使用require引入会自动生成css,import 不会生成
-import Index from './apps/index/index.jsx';
-
+let person = new Atm('Mary',17);
+person.getname();
 new Index();
 
 // ReactDOM.render( < Comment  name="mary"  / > , document.getElementById('content'));

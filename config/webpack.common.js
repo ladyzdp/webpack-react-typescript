@@ -3,12 +3,13 @@ const chalk = require('chalk');
 const os = require('os');
 const webpack = require('webpack');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 const HappyPack = require('happypack');
 const happyThreadPool = HappyPack.ThreadPool({
     size: os.cpus().length
 })
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
+const TypedocWebpackPlugin = require('typedoc-webpack-plugin');
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
@@ -59,7 +60,7 @@ function isBuild() {
 module.exports = {
     context: path.resolve(__dirname, '../'),
     entry: {
-        index: './src/index.js',
+        index: './src/index.tsx',
         // login: './src/apps/login/login.js',
         jquery: 'jquery', //4.0之后单独打包第三方库
         // laydate:'laydate',//4.0之后单独打包第三方库
@@ -70,8 +71,12 @@ module.exports = {
         // chunkFilename: '[name].bundle.js',
         //  publicPath: './'
     },
+    // externals: {
+    //     "react": "React",
+    //     "react-dom": "ReactDOM"
+    // },
     resolve: {
-        extensions: [ 'jsx', ".js",'.scss', ".css", '.json'],
+        extensions: [".ts", ".tsx", ".jsx", ".js", ".json", '.scss', ".css"],
         alias: {
             laydate: path.resolve(__dirname, 'src/lib/laydate/laydate.js')
         }
@@ -89,10 +94,19 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /\.jsx?$/,
-                loader: 'happypack/loader?id=happy-babel-js',
-                include: [resolve('src')],
-                exclude: /node_modules/,
+                enforce: "pre",
+                test: /\.js$/,
+                loader: "source-map-loader"
+            },
+            // {
+            //     test: /\.jsx?$/,
+            //     loader: 'happypack/loader?id=happy-babel-js',
+            //     include: [resolve('src')],
+            //     exclude: /node_modules/,
+            // },
+            {
+                test: /\.tsx?$/,
+                loader: "awesome-typescript-loader"
             },
             { //file-loader 解决css等文件中引入图片路径的问题
                 // url-loader 当图片较小的时候会把图片BASE64编码，大于limit参数的时候还是使用file-loader 进行拷贝
@@ -171,15 +185,17 @@ module.exports = {
             join: ['lodash', 'join'],
             // _: ['lodash'],
             $: ['jquery'],
-            // 'React':'react',
-            // 'ReactDOM':'react-dom'
+            "react": "React",
+            "react-dom": "ReactDOM"
             // laydate: ['laydate']
         }),
-
+        new CheckerPlugin(),
         // new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.dll.js'),
         new ProgressBarPlugin({
             format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)'
+        }),
+        new TypedocWebpackPlugin({
+            // json: './docs.json',
         })
     ],
-
 };
