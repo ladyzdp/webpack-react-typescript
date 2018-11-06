@@ -14,7 +14,8 @@
     "dll": "webpack --config config/webpack.dll.js",
     "server": "node dev-server.js",
     "dev": "npm run dll && npm run start",
-    "prod": "npm run dll && npm run build"
+    "prod": "npm run dll && npm run build && typedoc",
+    "docs": "typedoc"
   },
   "private": true,
   "author": "",

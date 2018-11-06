@@ -9,7 +9,7 @@ const happyThreadPool = HappyPack.ThreadPool({
     size: os.cpus().length
 })
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const TypedocWebpackPlugin = require('typedoc-webpack-plugin');
+// const TypedocWebpackPlugin = require('typedoc-webpack-plugin');
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
@@ -193,9 +193,6 @@ module.exports = {
         // new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.dll.js'),
         new ProgressBarPlugin({
             format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)'
-        }),
-        new TypedocWebpackPlugin({
-            // json: './docs.json',
         })
     ],
 };

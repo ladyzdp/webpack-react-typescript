@@ -10,7 +10,7 @@ const glob = require('glob');
 const PurifyCSSPlugin = require('purifycss-webpack'); //删除无用的class类名
 const WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-// const TypedocWebpackPlugin = require('typedoc-webpack-plugin');
+const TypedocWebpackPlugin = require('typedoc-webpack-plugin');
 
 module.exports = merge(common, {
     // devtool: 'source-map',
@@ -19,9 +19,9 @@ module.exports = merge(common, {
         publicPath: './'
     },
     plugins: [
-        // new TypedocWebpackPlugin({
-        //     json: './docs.json',
-        // }),
+        new TypedocWebpackPlugin({
+            json: '../tsconfig.json',
+        }),
         new HtmlWebpackPlugin({
             chunks: ['index', 'common'],
             filename: 'index.html', // 配置输出文件名和路径

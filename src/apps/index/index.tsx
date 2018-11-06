@@ -1,6 +1,8 @@
 
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import './style/index.scss';
+// require('./index1'); //使用require引入会自动生成css,import 不会生成
  /**
   * 测试接口
   *
@@ -31,7 +33,8 @@ export default class Atm {
   name: string;
   age: number;
   /**
-   *Creates an instance of Atm.
+   *Creates an instance of Atm. 
+   [[include:app-bar.md]]
    * @param {string} name 名称
    * @param {number} age 年龄
    * @memberof Atm

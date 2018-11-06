@@ -5,7 +5,7 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": true,
-        "allowJs":true,
+        "allowJs": true,
         "target": "es5",
         "lib": [
             "dom",
@@ -15,7 +15,7 @@
         "outDir": "dist",
         "rootDir": "src",
         "jsx": "react",
-        
+
     },
     "include": [
         "src/**/*"
@@ -24,7 +24,29 @@
         "src/**/*.spec.*",
         "**/*.d.ts",
         "*.d.ts",
-    ]
+    ],
+    "typedocOptions": {
+        "mode": "file",
+        "out": "docs",
+        "help": false,
+        "jsx": true,
+        "readme": "./readme.md",
+        "theme": "default",
+        "ignoreCompilerErrors": true,
+        "excludePrivate": true,
+        "excludeNotExported": true,
+        "target": "ES5",
+        "moduleResolution": "node",
+        "preserveConstEnums": true,
+        "stripInternal": true,
+        "hideGenerator": true,
+        "suppressExcessPropertyErrors": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "module": "commonjs",
+        "disableOutputCheck": true,
+        "includes": "./api",
+        "media": "./media"
 
+    }
 
 }
