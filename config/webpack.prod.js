@@ -19,9 +19,11 @@ module.exports = merge(common, {
         publicPath: './'
     },
     plugins: [
+        // typedoc生成api文档
         new TypedocWebpackPlugin({
             json: '../tsconfig.json',
         }),
+        // html打包
         new HtmlWebpackPlugin({
             chunks: ['index', 'common'],
             filename: 'index.html', // 配置输出文件名和路径
@@ -33,22 +35,30 @@ module.exports = merge(common, {
             }
 
         }),
+        // 拷贝静态资源
         new CopyWebpackPlugin([{
             from: path.join(__dirname, '..', 'src/assets'),
             to: path.join(__dirname, '..', 'dist', 'assets'),
             ignore: ['.*']
-        }]),
-        new CopyWebpackPlugin([{
+        }, {
             from: path.join(__dirname, '..', 'src/lib/laydate/theme/**/*'),
             to: path.join(__dirname, '..', 'dist', 'theme'),
             ignore: ['.*']
         }]),
+
+        // new CopyWebpackPlugin([{
+        //     from: path.join(__dirname, '..', 'src/lib/laydate/theme/**/*'),
+        //     to: path.join(__dirname, '..', 'dist', 'theme'),
+        //     ignore: ['.*']
+        // }]),
+        // 删除dist打包目录
         new CleanWebpackPlugin(['dist'], {
             root: path.join(__dirname, '..'),
             exclude: ['manifest.json', 'vendor.dll.js'],
             verbose: true,
             dry: false
         }),
+        // CSS类名排序
         new OptimizeCssAssetsPlugin({
             assetNameRegExp: /\.optimize\.css$/g,
             cssProcessor: require('cssnano'),
@@ -59,7 +69,7 @@ module.exports = merge(common, {
             },
             canPrint: true
         }),
-        
+        // 无用的CSS类名
         new PurifyCSSPlugin({
             paths: glob.sync(path.join(__dirname, '../src/*.html')),
             // minimize:true,
@@ -67,7 +77,7 @@ module.exports = merge(common, {
                 whitelist: ['*icon*'] //白名单
             }
         }),
-
+        // 压缩JS
         new WebpackParallelUglifyPlugin({
             uglifyJS: {
                 output: {

@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const { CheckerPlugin } = require('awesome-typescript-loader');
 const HappyPack = require('happypack');
+const markdownRenderer = require('react-markdown-reader').renderer;
 const happyThreadPool = HappyPack.ThreadPool({
     size: os.cpus().length
 })
@@ -92,6 +93,19 @@ module.exports = {
                 use: ['css-hot-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
                 include: [resolve('src')],
                 exclude: /node_modules/
+            },
+
+            {
+                test: /\.md$/,
+                use: [{
+                    loader: 'html-loader'
+                }, {
+                    loader: 'markdown-loader',
+                    options: {
+                        pedantic: true,
+                        renderer: markdownRenderer()
+                    }
+                }]
             },
             {
                 enforce: "pre",

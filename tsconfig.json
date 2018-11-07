@@ -30,7 +30,7 @@
         "out": "docs",
         "help": false,
         "jsx": true,
-        "readme": "./readme.md",
+        "readme": "./READMD.md",
         "theme": "default",
         "ignoreCompilerErrors": true,
         "excludePrivate": true,
@@ -45,7 +45,7 @@
         "module": "commonjs",
         "disableOutputCheck": true,
         "includes": "./api",
-        "media": "./media"
+        // "media": "./media"
 
     }
 
