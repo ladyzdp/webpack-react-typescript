@@ -103,7 +103,8 @@ module.exports = {
                     loader: 'markdown-loader',
                     options: {
                         pedantic: true,
-                        renderer: markdownRenderer()
+                        renderer: markdownRenderer(["javascript","bash", "xml", "css", "markdown", "less"])
+                  
                     }
                 }]
             },

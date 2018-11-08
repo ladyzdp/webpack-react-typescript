@@ -76,6 +76,9 @@
     "jquery": "^3.3.1",
     "laydate": "^1.0.7",
     "lodash": "^4.17.10",
-    "react-code-view": "^1.1.13"
+    "markdown-navbar": "^1.0.7",
+    "markdown-to-jsx": "^6.8.3",
+    "react-code-view": "^1.1.13",
+    "react-markdown": "^4.0.3"
   }
 }

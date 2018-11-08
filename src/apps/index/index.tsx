@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import './style/index.scss';
 // import CodeView from 'react-code-view';
-import { Button } from '../button/button';
+// import { Button } from '../button/button';
 
 
 // Button();
