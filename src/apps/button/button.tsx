@@ -5,9 +5,7 @@ import * as React from 'react';
 export class App extends React.Component {
   render() {
     return (
-      <button type="button">
-        <span>点击我</span>
-      </button>
+      <button type="button">点击我111</button>
     );
   }
 

@@ -13,13 +13,17 @@
 - 不影响整个文档流的布局
 - 支持 React, 支持代码高亮
 
-## #演示
+## 演示
+
+
 # DatePicker
 <!--start-code-->
 
-```js
+```jsx
+
 const instance = <Button>Test</Button>;
 ReactDOM.render(instance);
+
 ```
 
 <!--end-code-->
@@ -29,7 +33,8 @@ ReactDOM.render(instance);
 
 ## 示例代码
 
-```js
+```jsx
+
 import CodeView from 'react-code-view';
 import 'react-code-view/lib/less/index.less';
 
@@ -39,6 +44,7 @@ import { Button } from 'rsuite';
 <CodeView dependencies={{ Button }} >
   {require('./example.md')}
 </CodeView>
+
 ```
 
 ## API

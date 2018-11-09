@@ -3,7 +3,9 @@ const chalk = require('chalk');
 const os = require('os');
 const webpack = require('webpack');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-const { CheckerPlugin } = require('awesome-typescript-loader');
+const {
+    CheckerPlugin
+} = require('awesome-typescript-loader');
 const HappyPack = require('happypack');
 const markdownRenderer = require('react-markdown-reader').renderer;
 const happyThreadPool = HappyPack.ThreadPool({
@@ -98,15 +100,17 @@ module.exports = {
             {
                 test: /\.md$/,
                 use: [{
-                    loader: 'html-loader'
-                }, {
-                    loader: 'markdown-loader',
-                    options: {
-                        pedantic: true,
-                        renderer: markdownRenderer(["javascript","bash", "xml", "css", "markdown", "less"])
-                  
+                        loader: 'html-loader'
+                    },
+                    {
+                        loader: 'markdown-loader',
+                        options: {
+                            pedantic: true,
+                            //  renderer: markdownRenderer(["javascript", "bash", "xml", "css", "markdown", "less"])
+
+                        }
                     }
-                }]
+                ]
             },
             {
                 enforce: "pre",
