@@ -20,18 +20,49 @@
 
 [filename](./react.js ':include :type=code')
 
+
 ```jsx
+/*react*/
+import App from '../src/apps/button/button.tsx';
 <script>
-alert('222')
+
+  export default class Application extends React.Component {
+    constructor(props) {
+      super(props)
+      this.state = {
+        color: 'blue'
+      }
+      this.globalVariable = globalVariable
+    }
+    render() {
+      return (
+        <div>
+          <div className='wrapper' ref={el => this.el = el}>
+            <div>
+            <p className='author'>author: {this.globalVariable}</p>
+            <button style={{color: this.state.color}} className='test' onClick={e => {alert('author: ' + this.globalVariable); this.setState({color: 'red'})}}>test</button>
+            </div>
+          </div>
+        </div>
+      )
+    }
+  }
 </script>
-import CodeView from 'react-code-view';
-import 'react-code-view/lib/less/index.less';
-
-import { Button } from 'rsuite';
+```
 
 
-<CodeView dependencies={{ Button }} >
-  {require('./example.md')}
-</CodeView>
+```jsx
+// /*react*/
+// import CodeView from 'react-code-view';
+// import 'react-code-view/lib/less/index.less';
+
+// import { Button } from 'rsuite';
+
+
+// <CodeView dependencies={{ Button }} >
+//   {require('./example.md')}
+// </CodeView>
+// <script src="../src/index.tsx">
 
 ```
+

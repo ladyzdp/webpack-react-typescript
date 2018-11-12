@@ -98,21 +98,6 @@ module.exports = {
             },
 
             {
-                test: /\.md$/,
-                use: [{
-                        loader: 'html-loader'
-                    },
-                    {
-                        loader: 'markdown-loader',
-                        options: {
-                            pedantic: true,
-                            //  renderer: markdownRenderer(["javascript", "bash", "xml", "css", "markdown", "less"])
-
-                        }
-                    }
-                ]
-            },
-            {
                 enforce: "pre",
                 test: /\.js$/,
                 loader: "source-map-loader"
@@ -126,6 +111,22 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 loader: "awesome-typescript-loader"
+            },
+            
+            {
+                test: /\.md$/,
+                use: [{
+                        loader: 'html-loader'
+                    },
+                    {
+                        loader: 'markdown-loader',
+                        options: {
+                            pedantic: true,
+                             renderer: markdownRenderer()
+
+                        }
+                    }
+                ]
             },
             { //file-loader 解决css等文件中引入图片路径的问题
                 // url-loader 当图片较小的时候会把图片BASE64编码，大于limit参数的时候还是使用file-loader 进行拷贝

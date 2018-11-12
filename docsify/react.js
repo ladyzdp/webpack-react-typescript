@@ -1,4 +1,4 @@
-
+// /*react*/
 function Name(props) {
 	return <h1>网站名称：{props.name}</h1>;
 }
@@ -17,7 +17,8 @@ function App() {
 	</div>
 	);
 }
-
+// alert('1111')
+// console.log('111')
 ReactDOM.render(
 	 <App />,
 	document.getElementById('example')

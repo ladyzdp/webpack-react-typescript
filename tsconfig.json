@@ -13,13 +13,11 @@
             "es2017.object"
         ],
         "outDir": "dist",
-        "rootDir": "src",
+        
         "jsx": "react",
 
     },
-    "include": [
-        "src/**/*"
-    ],
+
     "exclude": [
         "src/**/*.spec.*",
         "**/*.d.ts",
