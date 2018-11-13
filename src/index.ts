@@ -11,25 +11,28 @@ import * as React from 'react';
 // const ReactMarkdown = require('react-markdown');
 // import Markdown from 'markdown-to-jsx';
 // const mark = require('./apps/index/demo/index.md');
-import './apps/index/style/markdown.css';
-import { App } from './apps/button/button';
+// import './apps/index/style/markdown.css';
+import Apps from './apps/button/button';
 // import MarkNav from 'markdown-navbar';
-import './apps/index/style/markdown-navbar.css';
+// import './apps/index/style/markdown-navbar.css';
 
-import { Column } from "./components/Column";
-import { ConstExportRow } from "./components/ConstExport";
-import { Grid } from "./components/Grid";
-import { HocComponent } from "./components/HocComponent";
-import { PureRow } from "./components/PureRow";
-import { Row } from "./components/Row";
+// import { Column } from "./components/Column";
+// import { ConstExportRow } from "./components/ConstExport";
+// import { Grid } from "./components/Grid";
+// import { HocComponent } from "./components/HocComponent";
+// import { PureRow } from "./components/PureRow";
+// import { Row } from "./components/Row";
 
 export {
-    Column,
-    ConstExportRow,
-    Grid,
-    HocComponent,
-    PureRow,
-    Row,
+    Apps,
+    // React,
+    // ReactDOM
+    // Column,
+    // ConstExportRow,
+    // Grid,
+    // HocComponent,
+    // PureRow,
+    // Row,
 }
 // import ButtonDemo from './apps/index/demo/demo.md';
 // class Demo extends React.Component {
@@ -58,7 +61,7 @@ export {
 //   }
 // }
 
-export {App}
+// export {App}
 // ReactDOM.render(<Button />, document.getElementById('content'));
 
 // ReactDOM.render(

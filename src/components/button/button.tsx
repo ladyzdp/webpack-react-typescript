@@ -10,5 +10,3 @@ export default class Apps extends React.Component {
   }
 
 }
-
-
