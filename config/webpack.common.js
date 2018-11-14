@@ -97,17 +97,18 @@ module.exports = {
                 exclude: /node_modules/
             },
 
-            {
-                enforce: "pre",
-                test: /\.js$/,
-                loader: "source-map-loader"
-            },
             // {
+            //     // enforce: "pre",
             //     test: /\.jsx?$/,
-            //     loader: 'happypack/loader?id=happy-babel-js',
-            //     include: [resolve('src')],
             //     exclude: /node_modules/,
+            //     loader: "babel-loader"
             // },
+            {
+                test: /\.jsx?$/,
+                loader: 'happypack/loader?id=happy-babel-js',
+                include: [resolve('src')],
+                exclude: /node_modules/,
+            },
             {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,

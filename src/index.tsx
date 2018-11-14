@@ -16,10 +16,9 @@ import Apps from './apps/button/button';
 // import MarkNav from 'markdown-navbar';
 // import './apps/index/style/markdown-navbar.css';
 
-// import { Column } from "./components/Column";
-// import { ConstExportRow } from "./components/ConstExport";
-// import { Grid } from "./components/Grid";
-// import { HocComponent } from "./components/HocComponent";
+import Grid from "./components/Grid";
+import Button from "./components/button";
+import ButtonGroup from "./components/button-group";
 // import { PureRow } from "./components/PureRow";
 // import { Row } from "./components/Row";
 
@@ -62,11 +61,19 @@ export {
 // }
 
 // export {App}
-// ReactDOM.render(<Button />, document.getElementById('content'));
+ReactDOM.render(
+    <ButtonGroup>
+            <Button>Click Me</Button>
+            <Button background='secondary'>Click Me</Button>
+            <Button background='tertiary'>Click Me</Button>
+            <Button background='dark'>Click Me</Button>
+        <Apps></Apps>
+    </ButtonGroup>,
+    document.getElementById('content'));
 
 // ReactDOM.render(
 //   <CodeView children={mark}
-    
+
 //     // forceBlock={true}
 //   />
 //   ,

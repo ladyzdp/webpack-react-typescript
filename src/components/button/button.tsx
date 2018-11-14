@@ -8,5 +8,4 @@ export default class Apps extends React.Component {
       <button type="button">点击我111</button>
     );
   }
-
 }

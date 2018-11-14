@@ -1,4 +1,28 @@
+
+
 ### Examples
+
+
+
+```js static
+import * as ReactDOM from 'react-dom';
+import * as React from 'react';
+
+export default class Apps extends React.Component {
+  render() {
+    return (
+      <button type="button">点击我111</button>
+    )
+  }
+}
+<Apps pizza="🍕" >
+```
+
+Apps example:
+
+```js
+<Button tag='a' href='http://google.com'>Click Me</Button>
+```
 
 **Tag**
 

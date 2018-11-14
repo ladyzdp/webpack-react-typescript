@@ -4,11 +4,9 @@
 
 Used to contain site content within a centered and minimum width container
 
-```
+```jsx
 <Container>
-  <Section>Header</Section>
-  <Section>Body</Section>
-  <Section>Footer</Section>
+  <div>Standard Use</div>
 </Container>
 ```
 
@@ -16,11 +14,9 @@ Used to contain site content within a centered and minimum width container
 
 Alter the minimum width of the container
 
-```
+```jsx
 <Container width={10} styles={{ backgroundColor: '#eee' }}>
-  <Section>Header</Section>
-  <Section>Body</Section>
-  <Section>Footer</Section>
+ <div>Standard Use</div>
 </Container>
 ```
 
@@ -28,11 +24,9 @@ Alter the minimum width of the container
 
 Apply one of the theme's shadows to the container
 
-```
+```jsx
 <Container shadow='light'>
-  <Section>Header</Section>
-  <Section>Body</Section>
-  <Section>Footer</Section>
+  <div>Standard Use</div>
 </Container>
 ```
 
@@ -43,7 +37,7 @@ Apply a custom styles object to alter the look. Available elements are:
 - `root`: Root content element
 - `outer`: Wrapper element
 
-```
+```jsx
 <Container styles={{
   root: {
     backgroundColor: 'whitesmoke',
