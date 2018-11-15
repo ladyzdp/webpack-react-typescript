@@ -16,7 +16,7 @@
     "dev": "npm run dll && npm run start",
     "prod": "npm run dll && npm run build && typedoc",
     "docs": "typedoc",
-    "styleguide": "tsc  && styleguidist server --open --config styleguide.config.js",
+    "styleguide": "tsc  && styleguidist server --config styleguide.config.js",
     "build:styleguide": "styleguidist build",
     "docsify": "docsify serve docsify -p 8888"
   },

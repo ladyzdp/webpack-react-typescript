@@ -3,7 +3,7 @@ const rhythm = (value = 1, unit = 'rem', basis = 1.5) => (
   Array.isArray(value)
     ? value.map(v => `${basis * v}${unit}`).join(' ')
     : `${basis * value}${unit}`
-)
+);
 
 const colors = {
   light: '#fff',
@@ -15,7 +15,7 @@ const colors = {
   secondary: '#ad29b6',
   tertiary: '#203a44',
   danger: '#d9534f'
-}
+};
 
 const theme = {
   color: {
@@ -49,7 +49,7 @@ const theme = {
   },
   maxWidth: 780,
   sidebarWidth: 240
-}
+};
 
 const styles = {
   ComponentsList: {
@@ -89,6 +89,14 @@ const styles = {
       fontWeight: '700'
     }
   },
+  Logo: {
+    logo: {
+      color:colors.light,
+      "font-size":"24px",
+      "padding-bottom":"20px"
+    }
+    
+  },
   ReactComponent: {
     tabs: {
       backgroundColor: colors.paleGrey,
@@ -110,7 +118,9 @@ const styles = {
     }
   },
   StyleGuide: {
+   
     content: {
+      
       paddingTop: rhythm(2.5),
       '@media (max-width: 600px)': {
         padding: rhythm(1)
@@ -160,17 +170,36 @@ const styles = {
       border: 0,
       '& li > a': {
         color: `${colors.light} !important`
+      },
+      isActive:{
+        "font-weight":"bold"
       }
+    },
+    CodeMirror:{
+      "margin-top":"10px"
     }
   },
   TabButton: {
+    content:{
+      border:"1px solid red",
+    },
     button: {
-      width: '100%'
+      width: '100%',
+      "padding":"5px 15px",
+      "border":`1px solid ${colors.paleGrey}`,
+      "border-top":0,
+      // "margin-bottom":"5px",
+      "border-radius":"0 0 5px 5px",
+      "font-size":"12px",
+      
     },
     isActive: {
-      border: 0
+      outline:"0 !important",
+      "border":`1px solid ${colors.paleGrey}`,
+      "font-weight":700
     }
   },
+
   Table: {
     table: {
       marginTop: rhythm(0.5),
@@ -190,9 +219,9 @@ const styles = {
       }
     }
   }
-}
+};
 
 module.exports = {
   styles: styles,
   theme: theme
-}
+};

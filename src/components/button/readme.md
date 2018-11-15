@@ -4,33 +4,23 @@
 
 
 
-```js static
-import * as ReactDOM from 'react-dom';
-import * as React from 'react';
+源码展示:
 
-export default class Apps extends React.Component {
-  render() {
-    return (
-      <button type="button">点击我111</button>
-    )
-  }
-}
-<Apps pizza="🍕" >
+```jsx {"file":"../button.tsx"}
 ```
 
-Apps example:
-
+示例：
 ```js
-<Button tag='a' href='http://google.com'>Click Me</Button>
+<Button tag='a' href='#'>Click Me</Button>
 ```
 
 **Tag**
 
 Specify the tag or component e.g. a, button, Link etc.
 
-```
+```js
 <ButtonGroup>
-  <Button tag='a' href='http://google.com'>Click Me</Button>
+  <Button tag='a' href='#'>Click Me</Button>
   <Button tag='button' onClick={() => console.log('clicked')}>Click Me</Button>
   <Button tag='span' onClick={() => console.log('clicked')}>Click Me</Button>
 </ButtonGroup>
@@ -40,7 +30,7 @@ Specify the tag or component e.g. a, button, Link etc.
 
 Change the background color to one of the theme's colors
 
-```
+```js
 <ButtonGroup>
   <Button>Click Me</Button>
   <Button background='secondary'>Click Me</Button>
@@ -51,7 +41,7 @@ Change the background color to one of the theme's colors
 
 Change the foreground color to one of the theme's colors
 
-```
+```js
 <ButtonGroup>
   <Button>Click Me</Button>
   <Button foreground='dark'>Click Me</Button>
@@ -62,7 +52,7 @@ Change the foreground color to one of the theme's colors
 
 Alter the font size, using a factor to be passed into the `scale` function
 
-```
+```js
 <ButtonGroup>
   <Button size={-1}>Click Me</Button>
   <Button size={0}>Click Me</Button>
@@ -75,7 +65,7 @@ Alter the font size, using a factor to be passed into the `scale` function
 
 Change the padding of the button by passing in a spacing object or number
 
-```
+```js
 <ButtonGroup>
   <Button spacing={{ x: 1, y: 1 }}>Click Me</Button>
   <Button spacing={{ l: 1, r: 1, b: 1, t: 1 }}>Click Me</Button>
@@ -87,7 +77,7 @@ Change the padding of the button by passing in a spacing object or number
 
 Set the border width (px) and/or color to one of the theme's colors
 
-```
+```js
 <ButtonGroup>
   <Button borderWidth={3}>Click Me</Button>
   <Button borderWidth={1}>Click Me</Button>
@@ -98,7 +88,7 @@ Set the border width (px) and/or color to one of the theme's colors
 
 Border Radius
 
-```
+```js
 <ButtonGroup>
   <Button radius='none'>Click Me</Button>
   <Button radius='small'>Click Me</Button>
@@ -111,7 +101,7 @@ Border Radius
 
 Specify a specific font treatment
 
-```
+```js
 <ButtonGroup>
   <Button>Click Me</Button>
   <Button font='head'>Click Me</Button>
@@ -122,7 +112,7 @@ Specify a specific font treatment
 
 Set the hover effect of the button
 
-```
+```js
 <ButtonGroup>
   <Button>Click Me</Button>
   <Button effect='shade'>Click Me</Button>
@@ -136,7 +126,7 @@ Set the hover effect of the button
 
 Pass in custom style rules to be applied to the button
 
-```
+```js
 <Button styles={{
   fontSize: '10px',
   backgroundColor: '#777'
