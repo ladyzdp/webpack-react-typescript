@@ -1,15 +1,42 @@
-# typeScript 备注规范
+# 快速开始
+
+项目集成 `webpack 4.0 + Typescript + React` 的基本配置
 
 
-| 名称        | 作用       | 备注                                                                |
-| ----------- | ---------- | ------------------------------------------------------------------- |
-| @param      | 参数描述   | 仅供类、接口、方法注释时使用。同一个注释块可同时出现多个param描述。 |
-| @return      | 返回描述   | 仅供方法注释时使用。除void方法外其它所有方法必须有一个return描述。  |
-| @throw      | 异常描述   | 零到多个。                                                          |
-| @exception  | 异常描述   | 零到多个。                                                          |
-| @author     | 作者       | 类和接口注释中必须有。可有零到多个。                                |
-| @version    | 版本描述   | 类和接口注释中必须有。零或一个。                                    |
-| @see        | 参考描述   | 可有零到多个。                                                      |
-| @since      | 起始版本   | 只有一个。                                                          |
-| @serial     | 序列化描述 | 或@serialField或@serialData，可有多个                               |
-| @deprecated | 废除标志   | 最多一个。                                                          |
+#### 安装依赖
+
+``` bash
+npm install 
+```
+####启动webpack调试项目
+
+``` bash
+npm run dev
+```
+
+##第三方工具集成
+
+使用`React Styleguidist`作为项目使用文档生成工具，能快速生成支持React 演示示例，快速编辑Demo的功能
+####启动文档生成工具
+
+``` bash
+npm run styleguide
+```
+
+
+`docsify`作为文档工具的备选方案，可根据需求使用，此工具对Vue框架相对友好，和React结合使用不太方便，按需使用吧
+####启动docsify工具服务
+
+``` bash
+npm run docsify
+```
+
+
+`typedoc` 作为Typescript 项目API生成工具是很好用的，配置集成在``tsconfig.json``文件中
+
+####启动typedoc命令生成Typescript项目API文档目录
+
+``` bash
+npm run docs
+```
+

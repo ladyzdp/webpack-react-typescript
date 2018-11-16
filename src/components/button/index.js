@@ -38,7 +38,7 @@ const Button = ({ children, tag: Tag, type, target, classNames, ...props }) => {
 
 Button.propTypes = {
   /**
-   * The text for the button
+   * 文本描述
    */
   children: PropTypes.any.isRequired,
 
